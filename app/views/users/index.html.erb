@@ -1,0 +1,36 @@
+<h1>Registered Users</h1>
+
+<div>
+  <%= will_paginate @users, container: false %>
+</div>
+
+<table>
+  <thead>
+    <tr>
+      <th>Username</th>
+      <th>Total Articles Written</th>
+      <th>Actions</th>
+      <th>Joined On</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @users.each do |user| %>
+
+    <tr>
+      <td> <%= link_to user.first_name, user %> </td>
+      <td> <%= pluralize(user.articles.count, 'article') %> </td>
+      <td><%= link_to 'View', user %></td>
+      <% if logged_in? && user == current_user %>
+        <td><%= link_to 'Edit', edit_user_path(user) %></td>
+      <% end %>
+      <td><%= time_ago_in_words(user.created_at) %> ago</td>
+    </tr>
+    <% end %>
+  </tbody>
+
+</table>
+
+<div>
+  <%= will_paginate @users, :container => false %>
+</div>
