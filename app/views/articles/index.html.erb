@@ -1,29 +1,3 @@
 <h3>Available Articles</h3>
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Description</th>
-      <th colspan = 3>Actions</th>
-      <%# <th>Written by</th> %>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @articles.each do |article| %>
-      <tr>
-        <td><%= article.title %></td>
-        <td><%= article.description %></td>
-        <%# <td>= article.user.username</td> %>
-        <td><%= link_to 'Show', article_path(article) %></td>
-        <td><%= link_to 'Edit', edit_article_path(article) %></td>
-        <td><%= link_to 'Delete', article_path(article), method: :delete, data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<p>
-  <%= link_to 'Create New Article', new_article_path %>
-</p>
+<%= render 'shared/article' %>
