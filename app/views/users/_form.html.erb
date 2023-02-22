@@ -18,6 +18,13 @@
         </div>
 
         <div class="form-group row">
+          <%= f.label :age, class: "col-2 col-form-label text-light" %>
+          <div class="col-10">
+            <%= f.number_field :age, class: "form-control shadow rounded", placeholder: "Enter your Age" %>
+          </div>
+        </div>
+
+        <div class="form-group row">
           <%= f.label :email, class: "col-2 col-form-label text-light" %>
           <div class="col-10"> 
             <%= f.email_field :email, class: "form-control shadow rounded", placeholder: "Enter your email address" %>
@@ -37,7 +44,7 @@
       <% end %>
     </div>
     <div class="mb-3">
-      <%= link_to '[ Articles List]', articles_path, class: "text-info" %>
+      <%= link_to '__Articles List__', articles_path, class: "text-info" %>
     </div>
   </div>
 </div>

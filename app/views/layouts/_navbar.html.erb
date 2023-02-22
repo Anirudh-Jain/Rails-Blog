@@ -47,7 +47,7 @@ body {
     <li><%= button_to 'Create Article', new_article_path %></li>
     <li><%= button_to 'View profile', user_path(current_user.id) %></li>
     <li><%= button_to 'Edit profile', edit_user_path(current_user.id) %></li>
-    <li><%= button_to 'Delete profile', user_path(current_user.id), method: :delete, data: {turbo_confirm: "Are you Sure?", turbo_method: :delete} %></li>
+    <li><%= button_to 'Delete profile', user_path(current_user.id), method: :delete, data: {turbo_method: :delete, turbo_confirm: "Are you Sure?"} %></li>
     <li><%= button_to 'LogOut', logout_path, method: :delete %></li>
 
   <% end %>
