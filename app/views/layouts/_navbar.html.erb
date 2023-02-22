@@ -35,23 +35,20 @@ body {
 </head>
 <body>
 
-<ul>
-  <li><%= button_to 'HOME', root_path %></li>
-  <li><%= button_to 'View Articles', articles_path %></li>
-  <li><%= button_to 'View Users', users_path %></li>
-  <% if not_logged_in? %>
-    <li><%= button_to 'Log in', login_path %></li>
-    <li><%= button_to 'Sign up!', signup_path %></li>
+<%= link_to 'HOME', root_path %>
+<%= link_to 'View Articles', articles_path %>
+<%= link_to 'View Users', users_path %>
+<% if not_logged_in? %>
+  <%= link_to 'Log in', login_path %>
+  <%= link_to 'Sign up!', signup_path %>
 
-  <% else %>
-    <li><%= button_to 'Create Article', new_article_path %></li>
-    <li><%= button_to 'View profile', user_path(current_user.id) %></li>
-    <li><%= button_to 'Edit profile', edit_user_path(current_user.id) %></li>
-    <li><%= button_to 'Delete profile', user_path(current_user.id), method: :delete, data: {turbo_method: :delete, turbo_confirm: "Are you Sure?"} %></li>
-    <li><%= button_to 'LogOut', logout_path, method: :delete %></li>
-
-  <% end %>
-</ul>
+<% else %>
+  <%= link_to 'Create Article', new_article_path %>
+  <%= link_to 'View profile', user_path(current_user.id) %>
+  <%= link_to 'Edit profile', edit_user_path(current_user.id) %>
+  <%= link_to 'Delete profile', user_path(current_user.id), method: :delete, data: {turbo_method: :delete, turbo_confirm: "Are you Sure?"} %>
+  <%= button_to 'LogOut', logout_path, method: :delete %> 
+<% end %>
 
 </body>
 </html>
