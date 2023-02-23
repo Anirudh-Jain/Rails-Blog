@@ -4,7 +4,7 @@ class User < ApplicationRecord
 
   before_save do
     self.first_name = first_name.downcase.capitalize
-    self.last_name = last_name.downcase.capitalize
+    self.last_name = last_name.downcase.capitalize if !last_name.nil?
     self.email = email.downcase
   end
 

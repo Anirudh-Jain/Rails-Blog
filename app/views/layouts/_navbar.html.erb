@@ -1,40 +1,3 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-body {
-  margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-.topnav {
-  overflow: hidden;
-  background-color: #333;
-}
-
-.topnav a {
-  float: left;
-  color: #f2f2f2;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-  font-size: 17px;
-}
-
-.topnav a:hover {
-  background-color: #ddd;
-  color: black;
-}
-
-.topnav a.active {
-  background-color: #04AA6D;
-  color: white;
-}
-</style>
-</head>
-<body>
-
 <%= link_to 'HOME', root_path %>
 <%= link_to 'View Articles', articles_path %>
 <%= link_to 'View Users', users_path %>
@@ -46,9 +9,6 @@ body {
   <%= link_to 'Create Article', new_article_path %>
   <%= link_to 'View profile', user_path(current_user.id) %>
   <%= link_to 'Edit profile', edit_user_path(current_user.id) %>
-  <%= link_to 'Delete profile', user_path(current_user.id), method: :delete, data: {turbo_method: :delete, turbo_confirm: "Are you Sure?"} %>
-  <%= button_to 'LogOut', logout_path, method: :delete %> 
+  <%= link_to 'Delete profile', user_path(current_user.id), method: :delete, data: {turbo_method: :delete, turbo_confirm: "Do you want to Delete Profile?"} %>
+  <%= link_to 'LogOut', logout_path, method: :delete, data: {turbo_method: :delete, turbo_confirm: "Confirm LogOut?"} %> 
 <% end %>
-
-</body>
-</html>
