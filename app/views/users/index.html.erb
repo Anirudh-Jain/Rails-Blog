@@ -3,22 +3,23 @@
 <table>
   <thead>
     <tr>
-      <th></th>
+      <th>Name of User</th>
       <th>Total Articles Written</th>
-      <th>Actions</th>
-      <th>Joined On</th>
+      <th colspan = 2>Actions</th>
+      <th>Joined Magazine</th>
     </tr>
   </thead>
 
   <tbody>
     <% @users.each do |user| %>
-
     <tr>
       <td> <%= link_to user.first_name, user %> </td>
       <td> <%= pluralize(user.articles.count, 'article') %> </td>
-      <td><%= link_to 'View', user %></td>
       <% if !not_logged_in? && user == current_user %>
-        <td><%= link_to 'Edit', edit_user_path(user) %></td>
+        <td><%= link_to 'View Profile', user %></td>
+        <td><%= link_to 'Edit Profile', edit_user_path(user) %></td>
+      <% else %>
+        <td colspan = 2><%= link_to 'View Profile', user %></td>
       <% end %>
       <td><%= time_ago_in_words(user.created_at) %> ago</td>
     </tr>

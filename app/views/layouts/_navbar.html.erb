@@ -1,14 +1,15 @@
-<%= link_to 'HOME', root_path %>
-<%= link_to 'View Articles', articles_path %>
-<%= link_to 'View Users', users_path %>
+<%= link_to 'HOME', root_path %> |
+<%= link_to 'Available Articles', articles_path %> |
+<%= link_to 'Registered Users', users_path %> |
 <% if not_logged_in? %>
-  <%= link_to 'Log in', login_path %>
+  <%= link_to 'Log in', login_path %> |
   <%= link_to 'Sign up!', signup_path %>
 
 <% else %>
-  <%= link_to 'Create Article', new_article_path %>
-  <%= link_to 'View profile', user_path(current_user.id) %>
-  <%= link_to 'Edit profile', edit_user_path(current_user.id) %>
-  <%= link_to 'Delete profile', user_path(current_user.id), method: :delete, data: {turbo_method: :delete, turbo_confirm: "Do you want to Delete Profile?"} %>
-  <%= link_to 'LogOut', logout_path, method: :delete, data: {turbo_method: :delete, turbo_confirm: "Confirm LogOut?"} %> 
+  <%= link_to 'Create Article', new_article_path %> |
+  <%= link_to 'View Profile', user_path(current_user.id) %> |
+  <%= link_to 'Edit Profile', edit_user_path(current_user.id) %> |
+  <%= link_to 'Delete Profile', user_path(current_user.id), method: :delete, data: {turbo_method: :delete, turbo_confirm: "Do you want to Delete Profile?"} %> |
+  <%= link_to "LogOut -- #{current_user.first_name}", logout_path, method: :delete, data: {turbo_method: :delete, turbo_confirm: "Confirm LogOut?"} %>
+  
 <% end %>

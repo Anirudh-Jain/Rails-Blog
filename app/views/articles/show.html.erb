@@ -1,12 +1,9 @@
-<h1>Article</h1>
+<h3><u><%= @article.title %></u></h3>
+<p><%= @article.description %></p>
+<br>
+<p><strong>by: </strong><i><%= @article.user.first_name + ' ' + @article.user.last_name %></i><br>contact: <%= mail_to "#{@article.user.email}" %></p>
 
-<p><strong>Title: </strong><%= @article.title %></p>
-<p><strong>Description: </strong><%= @article.description %></p>
-<p><strong>by </strong> <%= @article.user.first_name + ' ' + @article.user.last_name %></p>
-
-<%= button_to 'Edit', edit_article_path(@article) %>
 <% if @article.user_id == current_user.id %>
+    <%= link_to 'Edit', edit_article_path(@article) %>
     <%= button_to 'Delete', article_path(@article), method: :delete %>
 <% end %>
-
-<%= button_to 'Articles List', articles_path %>

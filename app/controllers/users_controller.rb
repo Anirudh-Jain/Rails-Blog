@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :find_user, only: %i[edit update show destroy]
+  before_action :find_user, only: [:edit, :update, :show, :destroy]
 
   def index
     @users = User.paginate(page: params[:page], per_page: 3)
@@ -20,25 +20,26 @@ class UsersController < ApplicationController
     end
   end
 
-  def edit; end
+  def edit
+  end
 
   def update
     if @user.update(user_params)
       flash[:notice] = 'Account Info Updated'
       redirect_to articles_path
     else
-      render 'edit'
+      render 'edit', staus: :unprocessable_entity
     end
   end
 
   def show
-    @articles = @user.articles
+    @articles = Article.paginate(page: params[:page], per_page: 3)
   end
 
   def destroy
     @user.destroy
     session[:user_id] = nil
-    flash[:notice] = 'Account and all associated Articles deleted'
+    flash[:notice] = "#{@user.first_name}'s account and all associated Articles are deleted"
     redirect_to articles_path
   end
 
